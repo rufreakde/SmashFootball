@@ -1,0 +1,29 @@
+<div class="header">
+    <mat-grid-list cols="4" rowHeight="80px">
+          <mat-grid-tile> 
+              <input matInput type="text" placeholder="{{currPlayerLenghPlaceholder}}" value="{{currPlayerLenghPlaceholder}}" (keyup)="setPlayerCount($event)"/>
+          </mat-grid-tile>
+          <mat-grid-tile> 
+              <button mat-button (click)="addPlayer('')">Add Player</button>
+          </mat-grid-tile>
+          <mat-grid-tile> 
+              <button mat-button (click)="removePlayer('')">Remove Player</button>
+          </mat-grid-tile>
+          <mat-grid-tile> 
+              <button mat-button (click)="runRandomSelection()">Randomize</button>
+          </mat-grid-tile>
+      </mat-grid-list>
+</div>
+
+<div class="MainDiv">  
+  <mat-grid-list cols={{maxCol}} rowHeight="2:1">
+      <mat-grid-tile *ngFor="let player of players; let i = index"> 
+          <img class="playerImage" [src]="player.character.image">
+          <div class="playerName">  
+            <input matInput type="text" (keydown)="focusWritingSpace($event, player)" (keyup)="storePlayerNameIntoElement($event)"/>
+          </div>
+          <img class="playerImageSecondChara" [src]="player.spareCharacter.image">
+      </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
